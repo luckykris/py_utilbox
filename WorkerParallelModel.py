@@ -1,3 +1,6 @@
+#author:luckykris
+#version 1.0
+#last modified : 2015-01-07
 import multiprocessing
 import Queue
 import time
