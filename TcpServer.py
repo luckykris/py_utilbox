@@ -34,5 +34,7 @@ class TcpServer:
 		while self.bool:
 			conn,ip=self.s.accept()
 			threading.Thread(target=self.Handler,args=(conn,ip)).start()
+	def Close(self):
+		self.s.close()
 	def __del__(self):
 		self.s.close()
