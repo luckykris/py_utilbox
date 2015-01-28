@@ -27,7 +27,7 @@ class New(TcpServer.TcpServer):
                                 r=int(conn.recv(1024))
                         except:
                                 try:
-                                        conn.send(">>Wrong Command!\n")
+                                        conn.send(">>Wrong Command!\n>>")
                                         continue
                                 except:
                                         continue
@@ -47,7 +47,7 @@ class New(TcpServer.TcpServer):
                                 conn.send(">>bye!\n")
                                 break
                         else:
-                                conn.send(">>Undefined command!!\n")
+                                conn.send(">>Undefined command!!\n>>")
                 return
 	def __Overseer(self):
 		self.StartServer()
