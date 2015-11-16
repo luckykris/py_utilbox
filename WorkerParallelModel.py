@@ -21,7 +21,7 @@ class New(TcpServer.TcpServer):
 	#	self.WORLERS=self.MANAGER.list()
 		self.OVERSEER = overseer
 		TcpServer.TcpServer.__init__(self,port=self.OVERSEER['port'])
-        def HandleFunc(self,conn,ip):
+	def HandleFunc(self,conn,ip):
                 print("MyTcpServer:you got a handler"+str(ip))
                 conn.send(">>Welcome To Process Overseer:\n1.stop all process safely\n2.show proccesslist\n3.exit\n>>")
                 while True:
@@ -39,9 +39,9 @@ class New(TcpServer.TcpServer):
                                 return -1
                         elif r == 2:
                                 info="Total:"+str(len(self.WORKERS))+"\nNAME\t\tPID\t\tALIVE\n"
-                                print self.WORKERS
+                                print(self.WORKERS)
                                 for i in self.status:
-                                        print i[0]
+                                        print(i[0])
                                         info=info+i[0]+"\t\t"+str(i[1])+"\t\t"+str(i[2])+"\n"
                                 info+=">>"
                                 conn.send(info)
