@@ -54,6 +54,11 @@ class New:
 						tmp_list2.append(i)
 						break
 			tmp_list=tmp_list2
+		for i in range(0,len(tmp_list)):
+			ls=list(tmp_list[i]['data'])
+			IpDnsObj=reqobj.req(name =ls[3] , qtype = DNS.Type.ANY)
+			ls[3]=IpDnsObj.answers[0]['data']
+			tmp_list[i]['data']=tuple(ls)
 		self.srvs=tmp_list
 		return
 	def get(self):
