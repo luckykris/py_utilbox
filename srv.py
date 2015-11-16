@@ -61,7 +61,7 @@ class New:
 			tmp_list[i]['data']=tuple(ls)
 		self.srvs=tmp_list
 		return
-	def get(self):
+	def get(self,info="srv"):
 		if time.time() - self.timestamp > self.interval:
 			self.initCache([x for x in range(0,len(self.servers))] )
 		if self.srvs == []:
@@ -71,4 +71,10 @@ class New:
 			for i in self.srvs:
 				if i['rdlength']<min['v']:
 					min['k']=i
-			return ("%s:%d")% (min['k']['data'][3],min['k']['data'][2])
+			if info == "port":
+				return min['k']['data'][2]
+			if info == "ip":
+				return min['k']['data'][3]
+			if info == "srv":
+				return ("%s:%d")% (min['k']['data'][3],min['k']['data'][2])
+			raise IOError("Error info ->'%s'" % info)
