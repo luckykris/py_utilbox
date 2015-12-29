@@ -13,6 +13,11 @@ def Start():
 	if pid != 0:
 		sys.exit(0)
 	pid=os.getpid()
+	os.umask(18)
+	null=open("/dev/null",'rw')
+	os.dup2(null.fileno(),0)
+	os.dup2(null.fileno(),1)
+	os.dup2(null.fileno(),2)
 	return pid
 	
 
